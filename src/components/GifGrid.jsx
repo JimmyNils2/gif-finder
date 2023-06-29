@@ -20,12 +20,12 @@ export const GifGrid = ({ category }) => {
   // }, []);
 
   // Method 2, Custom Hook
-  const {images, isLoading} = useFetchGifs( category );
+  const { images, isLoading } = useFetchGifs(category);
 
   return (
     <>
-      <h3>{ category }</h3>
-      
+      <h3>{category}</h3>
+
       {
         isLoading && (<h2>Loading...</h2>)
       }
@@ -39,15 +39,15 @@ export const GifGrid = ({ category }) => {
           //     url = { url }
           //   />
           // ))
-          
+
           // Method 2, spread props. Helpful with a lot of props
-          images.map( (image) => (
-              < GifItem 
-                key={ image.id }
-                { ...image }
-               />
+          images.map((image) => (
+            < GifItem
+              key={image.id}
+              {...image}
+            />
           ))
-          }
+        }
       </div>
     </>
   )

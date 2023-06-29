@@ -3,45 +3,45 @@ import { GifExpertApp } from '../src/GifExpertApp';
 
 describe('Test-suite on GifExpertApp component', () => {
 
-    //Arrange
-    const testNewCategory = 'Goku';
-    const testRepeatedCategory = 'Vegeta';
+  //Arrange
+  const testNewCategory = 'Goku';
+  const testRepeatedCategory = 'Vegeta';
 
-    test('Should add a new category', () => {
+  test('Should add a new category', () => {
 
-        render( < GifExpertApp />);
-        
+    render(< GifExpertApp />);
 
-        const textInput = screen.getByRole('textbox');
-        const form = screen.getByRole('form');
-        
-        //Trigger event on text input
-        fireEvent.input(textInput, {target: {value: testNewCategory}});
-        fireEvent.submit(form)
 
-        // screen.debug();
+    const textInput = screen.getByRole('textbox');
+    const form = screen.getByRole('form');
 
-        //Assert
-        const title = screen.getAllByRole('heading', {level: 3});
-        expect(title.length).toBeGreaterThan(1);
-    });
+    //Trigger event on text input
+    fireEvent.input(textInput, { target: { value: testNewCategory } });
+    fireEvent.submit(form)
 
-    test('Shouldn\'t add a new category', () => {
+    // screen.debug();
 
-        render( < GifExpertApp />);
-        
+    //Assert
+    const title = screen.getAllByRole('heading', { level: 3 });
+    expect(title.length).toBeGreaterThan(1);
+  });
 
-        const textInput = screen.getByRole('textbox');
-        const form = screen.getByRole('form');
-        
-        //Trigger event on text input
-        fireEvent.input(textInput, {target: {value: testRepeatedCategory}});
-        fireEvent.submit(form)
+  test('Shouldn\'t add a new category', () => {
 
-        // screen.debug();
+    render(< GifExpertApp />);
 
-        //Assert
-        const title = screen.getAllByRole('heading', {level: 3});
-        expect(title.length).toBeLessThan(2);
-    });
+
+    const textInput = screen.getByRole('textbox');
+    const form = screen.getByRole('form');
+
+    //Trigger event on text input
+    fireEvent.input(textInput, { target: { value: testRepeatedCategory } });
+    fireEvent.submit(form)
+
+    // screen.debug();
+
+    //Assert
+    const title = screen.getAllByRole('heading', { level: 3 });
+    expect(title.length).toBeLessThan(2);
+  });
 });
